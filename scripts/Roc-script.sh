@@ -109,6 +109,15 @@ rm -rf feeds/luci/applications/luci-app-openclash
 # git clone --depth=1 https://github.com/Openwrt-Passwall/openwrt-passwall2 package/luci-app-passwall2
 git clone --depth=1 https://github.com/vernesong/OpenClash package/luci-app-openclash
 
+### MosDNS ###
+# 移除 feeds 中可能存在的旧版本 MosDNS (避免冲突)
+rm -rf feeds/packages/net/mosdns
+rm -rf package/mosdns
+# 克隆 MosDNS v5 分支 (Luci界面 + 主程序)
+git clone --depth=1 -b v5 https://github.com/sbwml/luci-app-mosdns package/mosdns
+# 克隆 v2ray-geodata (MosDNS 需要的依赖)
+git clone --depth=1 https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
 # 清理 PassWall 的 chnlist 规则文件
 # echo "baidu.com"  > package/luci-app-passwall/luci-app-passwall/root/usr/share/passwall/rules/chnlist
 
